@@ -92,7 +92,10 @@ MonoBehaviour:
   currentAction: 0
   Ground:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
+  Obstacle:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!212 &212161697991022006
 SpriteRenderer:
   m_ObjectHideFlags: 1
