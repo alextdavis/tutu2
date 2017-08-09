@@ -15,7 +15,12 @@ public class PlayerAction : MonoBehaviour
     }
 
     public Action CurrentAction = Action.Idle;
-    private Rigidbody2D rb;
+	
+	 private Rigidbody2D rb;
+
+	 public LayerMask Ground;
+
+	 private bool grounded = false;
 
     // Use this for initialization
     private void Start()
@@ -68,4 +73,22 @@ public class PlayerAction : MonoBehaviour
             CurrentAction = Action.Falling;
         }
     }
+
+	void CheckGround()
+	{
+		if (rb.velocity.y > -0.1 && rb.velocity.y < 0.1)
+		{
+			Vector2 footPos = new Vector2(transform.position.x, transform.position.y) + new Vector2(0.0f, -0.5f);
+			RaycastHit2D hit = Physics2D.Raycast(footPos, Vector2.down, 0.1f, Ground);
+			if (hit)
+			{
+				grounded = true;
+			}
+			else
+			{
+				grounded = false;
+			}
+		}
+		//print("Grounded: " + grounded);
+	}
 }
